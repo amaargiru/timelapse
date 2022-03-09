@@ -1,0 +1,8 @@
+<resources>
+
+    <dimen name="baseui_vertical_margin">10sp</dimen>
+    <dimen name="baseui_horizontal_margin">10sp</dimen>
+    <dimen name="descr_text_vertical_margin">10sp</dimen>
+    <dimen name="descr_text_horizontal_margin">10sp</dimen>
+
+</resources>

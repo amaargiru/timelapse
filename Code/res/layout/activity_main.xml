@@ -1,0 +1,154 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor" >
+
+    <TextView
+        android:id="@+id/centerEmptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <SurfaceView
+        android:id="@+id/mSurfaceView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_toRightOf="@+id/centerEmptyText" >
+    </SurfaceView>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="@dimen/baseui_horizontal_margin"
+        android:layout_toLeftOf="@+id/centerEmptyText"
+        android:orientation="vertical" >
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/periodRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/periodText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:text="@string/periodText" >
+
+                    <requestFocus />
+                </TextView>
+
+                <EditText
+                    android:id="@+id/periodEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+                    android:ems="2"
+                    android:inputType="numberDecimal"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/secondsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+                    android:text="@string/seconds" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/fpsRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/framerateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:text="@string/framerateText" />
+
+                <EditText
+                    android:id="@+id/fpsEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+                    android:ems="2"
+                    android:inputType="numberDecimal"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/fpsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+                    android:text="@string/fps" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/startButton"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+                    android:layout_weight="1"
+                    android:text="@string/startButtonText" />
+
+                <Button
+                    android:id="@+id/createButton"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+                    android:layout_weight="1"
+                    android:text="@string/createButtonText" />
+            </LinearLayout>
+
+            <TableRow
+                android:id="@+id/totalsnapshotsRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/totalsnapshotsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+                    android:text="@string/totalsnapshotsText" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/modeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/baseui_horizontal_margin"
+            android:text="@string/longestComment" />
+    </LinearLayout>
+
+</RelativeLayout>
