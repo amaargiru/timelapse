@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">Time Lapse Render</string>
     <string name="title_activity_main">TimeLapse</string>
     <string name="admob_publisher_id">a150adc5d8c00ab</string>
@@ -13,5 +12,4 @@
     <string name="totalsnapshotsText">Total snapshots: 0</string>
     <string name="modeText">Work mode: ready to start</string>
     <string name="longestComment">+ Work mode: /sdcard/TimeLapseFolder/TimeLapseMovie.avi is rendered +</string>
-
 </resources>
