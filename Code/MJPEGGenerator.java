@@ -138,11 +138,6 @@ public class MJPEGGenerator {
     }
 
     private class AVIMainHeader {
-        /* FOURCC fcc; DWORD cb; DWORD dwMicroSecPerFrame; DWORD dwMaxBytesPerSec; DWORD dwPaddingGranularity; DWORD
-         * dwFlags; DWORD dwTotalFrames; DWORD dwInitialFrames; DWORD dwStreams; DWORD dwSuggestedBufferSize; DWORD
-         * dwWidth; DWORD dwHeight; DWORD dwReserved[4];
-         */
-
         public byte[] fcc = new byte[]{'a', 'v', 'i', 'h'};
         public int cb = 56;
         public int dwMicroSecPerFrame = 0; // (1/frames per sec) * 1,000,000
@@ -209,12 +204,6 @@ public class MJPEGGenerator {
     }
 
     private class AVIStreamHeader {
-        /* FOURCC fcc; DWORD cb; FOURCC fccType; FOURCC fccHandler; DWORD dwFlags; WORD wPriority; WORD wLanguage; DWORD
-         * dwInitialFrames; DWORD dwScale; DWORD dwRate; DWORD dwStart; DWORD dwLength; DWORD dwSuggestedBufferSize;
-         * DWORD dwQuality; DWORD dwSampleSize; struct { short int left; short int top; short int right; short int
-         * bottom; } rcFrame;
-         */
-
         public byte[] fcc = new byte[]{'s', 't', 'r', 'h'};
         public int cb = 64;
         public byte[] fccType = new byte[]{'v', 'i', 'd', 's'};
@@ -268,11 +257,6 @@ public class MJPEGGenerator {
     }
 
     private class AVIStreamFormat {
-        /* FOURCC fcc; DWORD cb; DWORD biSize; LONG biWidth; LONG biHeight; WORD biPlanes; WORD biBitCount; DWORD
-         * biCompression; DWORD biSizeImage; LONG biXPelsPerMeter; LONG biYPelsPerMeter; DWORD biClrUsed; DWORD
-         * biClrImportant;
-         */
-
         public byte[] fcc = new byte[]{'s', 't', 'r', 'f'};
         public int cb = 40;
         public int biSize = 40; // same as cb
