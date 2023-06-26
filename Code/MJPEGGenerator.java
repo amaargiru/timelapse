@@ -52,7 +52,12 @@ public class MJPEGGenerator {
     }
 
     public void addImage(Bitmap image) throws Exception {
-        byte[] fcc = new byte[]{'0', '0', 'd', 'b'};
+        byte[] fcc = new byte[] {
+            '0',
+            '0',
+            'd',
+            'b'
+        };
         byte[] imagedata = writeImageToBytes(image);
         int useLength = imagedata.length;
         long position = aviChannel.position();
@@ -81,7 +86,7 @@ public class MJPEGGenerator {
         raf.seek(4);
         raf.write(intBytes(swapInt((int) size - 8)));
         raf.seek(aviMovieOffset + 4);
-        raf.write(intBytes(swapInt((int) (size - 8 - aviMovieOffset - indexlistBytes.length))));
+        raf.write(intBytes(swapInt((int)(size - 8 - aviMovieOffset - indexlistBytes.length))));
         raf.close();
     }
 
@@ -90,34 +95,54 @@ public class MJPEGGenerator {
     }
 
     public static short swapShort(short v) {
-        return (short) ((v >>> 8) | (v << 8));
+        return (short)((v >>> 8) | (v << 8));
     }
 
     public static byte[] intBytes(int i) {
         byte[] b = new byte[4];
-        b[0] = (byte) (i >>> 24);
-        b[1] = (byte) ((i >>> 16) & 0x000000FF);
-        b[2] = (byte) ((i >>> 8) & 0x000000FF);
-        b[3] = (byte) (i & 0x000000FF);
+        b[0] = (byte)(i >>> 24);
+        b[1] = (byte)((i >>> 16) & 0x000000FF);
+        b[2] = (byte)((i >>> 8) & 0x000000FF);
+        b[3] = (byte)(i & 0x000000FF);
 
         return b;
     }
 
     public static byte[] shortBytes(short i) {
         byte[] b = new byte[2];
-        b[0] = (byte) (i >>> 8);
-        b[1] = (byte) (i & 0x000000FF);
+        b[0] = (byte)(i >>> 8);
+        b[1] = (byte)(i & 0x000000FF);
 
         return b;
     }
 
     private class RIFFHeader {
-        public byte[] fcc = new byte[]{'R', 'I', 'F', 'F'};
+        public byte[] fcc = new byte[] {
+            'R',
+            'I',
+            'F',
+            'F'
+        };
         public int fileSize = 0;
-        public byte[] fcc2 = new byte[]{'A', 'V', 'I', ' '};
-        public byte[] fcc3 = new byte[]{'L', 'I', 'S', 'T'};
+        public byte[] fcc2 = new byte[] {
+            'A',
+            'V',
+            'I',
+            ' '
+        };
+        public byte[] fcc3 = new byte[] {
+            'L',
+            'I',
+            'S',
+            'T'
+        };
         public int listSize = 200;
-        public byte[] fcc4 = new byte[]{'h', 'd', 'r', 'l'};
+        public byte[] fcc4 = new byte[] {
+            'h',
+            'd',
+            'r',
+            'l'
+        };
 
         public RIFFHeader() {
 
@@ -138,7 +163,12 @@ public class MJPEGGenerator {
     }
 
     private class AVIMainHeader {
-        public byte[] fcc = new byte[]{'a', 'v', 'i', 'h'};
+        public byte[] fcc = new byte[] {
+            'a',
+            'v',
+            'i',
+            'h'
+        };
         public int cb = 56;
         public int dwMicroSecPerFrame = 0; // (1/frames per sec) * 1,000,000
         public int dwMaxBytesPerSec = 10000000;
@@ -153,7 +183,7 @@ public class MJPEGGenerator {
         public int[] dwReserved = new int[4];
 
         public AVIMainHeader() {
-            dwMicroSecPerFrame = (int) ((1.0 / framerate) * 1000000.0);
+            dwMicroSecPerFrame = (int)((1.0 / framerate) * 1000000.0);
             dwWidth = width;
             dwHeight = height;
             dwTotalFrames = numFrames;
@@ -184,9 +214,19 @@ public class MJPEGGenerator {
     }
 
     private class AVIStreamList {
-        public byte[] fcc = new byte[]{'L', 'I', 'S', 'T'};
+        public byte[] fcc = new byte[] {
+            'L',
+            'I',
+            'S',
+            'T'
+        };
         public int size = 124;
-        public byte[] fcc2 = new byte[]{'s', 't', 'r', 'l'};
+        public byte[] fcc2 = new byte[] {
+            's',
+            't',
+            'r',
+            'l'
+        };
 
         public AVIStreamList() {
 
@@ -204,10 +244,25 @@ public class MJPEGGenerator {
     }
 
     private class AVIStreamHeader {
-        public byte[] fcc = new byte[]{'s', 't', 'r', 'h'};
+        public byte[] fcc = new byte[] {
+            's',
+            't',
+            'r',
+            'h'
+        };
         public int cb = 64;
-        public byte[] fccType = new byte[]{'v', 'i', 'd', 's'};
-        public byte[] fccHandler = new byte[]{'M', 'J', 'P', 'G'};
+        public byte[] fccType = new byte[] {
+            'v',
+            'i',
+            'd',
+            's'
+        };
+        public byte[] fccHandler = new byte[] {
+            'M',
+            'J',
+            'P',
+            'G'
+        };
         public int dwFlags = 0;
         public short wPriority = 0;
         public short wLanguage = 0;
@@ -225,7 +280,7 @@ public class MJPEGGenerator {
         public int bottom = 0;
 
         public AVIStreamHeader() {
-            dwScale = (int) ((1.0 / framerate) * 1000000.0);
+            dwScale = (int)((1.0 / framerate) * 1000000.0);
             dwLength = numFrames;
         }
 
@@ -257,14 +312,24 @@ public class MJPEGGenerator {
     }
 
     private class AVIStreamFormat {
-        public byte[] fcc = new byte[]{'s', 't', 'r', 'f'};
+        public byte[] fcc = new byte[] {
+            's',
+            't',
+            'r',
+            'f'
+        };
         public int cb = 40;
         public int biSize = 40; // same as cb
         public int biWidth = 0;
         public int biHeight = 0;
         public short biPlanes = 1;
         public short biBitCount = 24;
-        public byte[] biCompression = new byte[]{'M', 'J', 'P', 'G'};
+        public byte[] biCompression = new byte[] {
+            'M',
+            'J',
+            'P',
+            'G'
+        };
         public int biSizeImage = 0; // width * height in pixels
         public int biXPelsPerMeter = 0;
         public int biYPelsPerMeter = 0;
@@ -299,9 +364,19 @@ public class MJPEGGenerator {
     }
 
     private class AVIMovieList {
-        public byte[] fcc = new byte[]{'L', 'I', 'S', 'T'};
+        public byte[] fcc = new byte[] {
+            'L',
+            'I',
+            'S',
+            'T'
+        };
         public int listSize = 0;
-        public byte[] fcc2 = new byte[]{'m', 'o', 'v', 'i'};
+        public byte[] fcc2 = new byte[] {
+            'm',
+            'o',
+            'v',
+            'i'
+        };
 
         // 00db size jpg image data ...
 
@@ -321,9 +396,14 @@ public class MJPEGGenerator {
     }
 
     private class AVIIndexList {
-        public byte[] fcc = new byte[]{'i', 'd', 'x', '1'};
+        public byte[] fcc = new byte[] {
+            'i',
+            'd',
+            'x',
+            '1'
+        };
         public int cb = 0;
-        public List<AVIIndex> ind = new ArrayList<AVIIndex>();
+        public List < AVIIndex > ind = new ArrayList < AVIIndex > ();
 
         public AVIIndexList() {
 
@@ -356,7 +436,12 @@ public class MJPEGGenerator {
     }
 
     private class AVIIndex {
-        public byte[] fcc = new byte[]{'0', '0', 'd', 'b'};
+        public byte[] fcc = new byte[] {
+            '0',
+            '0',
+            'd',
+            'b'
+        };
         public int dwFlags = 16;
         public int dwOffset = 0;
         public int dwSize = 0;
@@ -379,7 +464,12 @@ public class MJPEGGenerator {
     }
 
     private class AVIJunk {
-        public byte[] fcc = new byte[]{'J', 'U', 'N', 'K'};
+        public byte[] fcc = new byte[] {
+            'J',
+            'U',
+            'N',
+            'K'
+        };
         public int size = 1808;
         public byte[] data = new byte[size];
 
